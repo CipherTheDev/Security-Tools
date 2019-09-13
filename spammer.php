@@ -15,8 +15,9 @@ $headers = "Spammed from: THeDestroyer";
 if(empty($amount)  || empty($target)){
   echo "<h2>Please enter an amount and target!</h2>";
 }
+if(isset($amount)){
   echo "<h1> Successfully sent $amount spam emails to $target</h1>";
-
+}
 for($i=0; $i <=$amount; $i++){
   mail($target, $subject,$message, $headers);
   mail($target, $subject,$message, $headers, $IP);
@@ -44,7 +45,7 @@ function Displays(){
   $HTMLTAGS = "<html>\n\n<style>body{background: grey;}</style></html>";
 }
 function DetectXSS(){
-  $array = array("<script>");
+  $array = array("<script>" , "<?php" , "<ScRiPt>"  , "onerror");
   echo "<h3>XSS ATTACK DETECTED</h3>";
 }
 DetectXSS();
