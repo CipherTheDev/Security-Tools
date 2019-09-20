@@ -12,7 +12,7 @@ if(empty($header)){
   echo "<h2>Please enter an amount</h2>";
 }
 $headers = "Spammed from: THeDestroyer";
-if(empty($amount)  || empty($target)){
+if(empty($amount)){
   echo "<h2>Please enter an amount and target!</h2>";
 }
 if(isset($amount)){
@@ -24,6 +24,9 @@ for($i=0; $i <=$amount; $i++){
 }
 if(empty($message)){
   echo "<h2>Please enter a message you wish to spam</h2>";
+}
+if(isset($message)){
+echo "<script>alert('EMAIL BOMBING');</script>";
 }
 time(); //work here more
 if(empty($target)){
