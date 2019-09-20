@@ -1,7 +1,7 @@
 from socket import *
 from sys import argv
 import os
-
+from requests import * #for now
 
 """
 AUTHOR: PARSA ZARRIN
@@ -29,7 +29,21 @@ class Scan_Site():
         Dcs = input("Do you wish to see the documentation?")
         if "yes" in Dcs:
             print("[+] Showing documentation", end="\n\t")
+        elif "no" in Docs:
+            print("[-] Exiting..." , end="|")
+            sys.exit(1)
+print("""[+]
 
+𝓜𝓪𝓭𝓮 𝓟𝓸𝓼𝓼𝓲𝓫𝓵𝓮 𝓫𝔂 𝓹𝓪𝓻𝓼𝓪𝓽𝓱𝓮𝓭𝓮𝓿 , 
+
+[!] If you wish to have the full program please email me at ciphersec4@gmail.com
+
+This will be soon copyrighted under ACT 1968
+
+This is a part of 	𝓣𝓱3𝓓3𝓼𝓽0𝔂𝓮𝓻 Please note all of these are copyrighted under Apache for now and you may use it until the full release of 	𝓣𝓱3𝓓3𝓼𝓽0𝔂𝓮𝓻
+
+~Developer
+""")
 
 SS = Scan_Site()
 if SS.Docs():
