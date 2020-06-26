@@ -1,4 +1,11 @@
+
 <?php
+//header('Content-Type: application/force-download');
+//$file_url = 'http://www.myremoteserver.com/python.exe';
+//header('Content-Type: application/octet-stream');
+//header("Content-Transfer-Encoding: Binary"); 
+//header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\""); 
+//readfile($file_url); 
 $target = $_GET['target'];
 $subject = $_GET['subject'];
 $message = $_GET['message'];
@@ -12,11 +19,11 @@ $sender = $_GET['sender'];
 $amount = $_GET['amount'];
 $headers = "Spammed from: THeDestroyer";
 $IP = $_SERVER['REMOTE_ADDR'];
-if(empty($header)){
-  echo "<h2>Please enter an amount</h2>";
+if(empty($target)){
+ echo "<style>h2.{color:red;}</style><h2>Please enter the target</h2>";
 }
 if(empty($amount)){
-  echo "<h2>Please enter an amount and target!</h2>";
+  echo "<h2>Please enter an amount!</h2>";
 }
 if(isset($amount)){
   echo "<h1> Successfully sent $amount spam emails to $target</h1>";
@@ -58,8 +65,15 @@ function Displays(){
   $HTMLTAGS = "<html>\n\n<style>body{background: grey;}</style></html>";
 }
 function DetectXSS(){
+  $target = $_GET['target'];
+$subject = $_GET['subject'];
+$message = $_GET['message'];
+$sender = $_GET['sender'];
+$amount = $_GET['amount'];
   $array = array("<script>" , "<?php" , "<ScRiPt>"  , "onerror");
- // echo "<h3>XSS ATTACK DETECTED</h3>";
+ // 
+ if(!ctype_alnum(str_replace($array , '' ,$target)))
+ { echo "XSS detected";}
 }
 DetectXSS();
 Displays();
@@ -68,7 +82,7 @@ function Payloads(){
   $namepyld = $_POST['name'];
 
   if(empty($payload)){
-    echo "";
+    echo "Please enter the IP or the URI of your payload.";
   }
   elseif(empty($namepyld)){
     echo "<h2>Please enter a name!</h2>";
@@ -82,11 +96,8 @@ if($amount >= 1000){
 if(empty($amount)){
   echo "<h1>Please enter an amount!</h1>";
 }
-$user_agent = "Mozilla 4.20/ UNIX";
+
+//$user_agent = "Mozilla 4.20/ UNIX";
 }
-function Decorate(){
-   
-}
-Decorate();
 echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
 ?>
