@@ -17,7 +17,8 @@ You then are required to have Python, C , C++ , PHP and/or Java installed.
 In order to install the Python API's do the following code:
 
 ```
-pip install pygeoip (original MaxMind API) else use pip install GeoScanner( In Alpha)
+pip install pygeoip (original MaxMind API) 
+else use pip install GeoScanner( In Alpha)
 
 pip install requests
 ```
