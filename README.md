@@ -14,11 +14,13 @@ This repository will contain a random ammount of security scripts that may be bu
 You first would need the programming langauge installed.
 You then are required to have Python, C , C++ , PHP and/or Java installed.
 
-In order to install Python do the following code:
+In order to install the Python API's do the following code:
 
-CODE HERE
+```
+pip install pygeoip (original MaxMind API) else use pip install GeoScanner( In Alpha)
 
-END CODE
+pip install requests
+```
 
 
 ### C Installation
