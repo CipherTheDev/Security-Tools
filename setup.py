@@ -10,6 +10,8 @@ try:
     time.sleep(20)
     f = open("Output.html" , "w")
     f.write("<h1>Setup completed</h1>")
+    f.writelines("<kbd>Once completed, please head over the CLI.</kbd>\nOtherwise find the relavent information below")
+    f.close()
 
 
 except Exception as e:
