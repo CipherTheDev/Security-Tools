@@ -33,7 +33,9 @@ END CODE
 
 ### C++ Installation
 
+**Get MingW**
 
+***Install  MingW***
 ### PHP Installation
 
 
