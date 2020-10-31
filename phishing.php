@@ -11,4 +11,5 @@ fwrite($myfile, $txt);
 fclose($myfile);
 $REQ =  $_GET['submit'];
 echo "";
+$SECURITY_ARRAY = array("<script>", "<ScRipt>" , " ");
 ?>
