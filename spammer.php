@@ -23,7 +23,9 @@ if(empty($target)){
  echo "<style>h2.{color:red;}</style><h2>Please enter the target</h2>";
 }
 if(empty($amount)){
-  echo "<h2>Please enter an amount!</h2>";
+  if($amount == 0){
+    echo "<pre>Application will not operate if zero is specified</pre>";
+  }
 }
 if(isset($amount)){
   echo "<h1> Successfully sent $amount spam emails to $target</h1>";
@@ -93,11 +95,3 @@ if($amount >= 1000){
 
 
 }
-if(empty($amount)){
-  echo "<h1>Please enter an amount!</h1>";
-}
-
-//$user_agent = "Mozilla 4.20/ UNIX";
-}
-echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-?>
