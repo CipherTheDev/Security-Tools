@@ -42,10 +42,7 @@ pip install requests
 
 ### Java Installation
 
-CODE HERE
-
-
-END CODE
+Require's Maven
 
 
 ###
