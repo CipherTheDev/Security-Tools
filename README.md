@@ -34,15 +34,27 @@ pip install requests
 
 ### C++ Installation
 
-**Get MingW**
+***Install  MingW and follow the instructions***
+```
+Windows: Download "Code::Blocks" , Specify your compiler, Open -> file.cpp
+```
+```
+Linux: RHEL DISTROS: yum install gcc
+Linux: RHEL DISTROS: yum install codeblocks
+```
+```
+Linux:  Debian: apt-get install gcc
 
-***Install  MingW***
+Linux:  Debian: apt-get install codeblocks
+
+GCC should be able to compile root# gcc file.cpp
+
+```
+
+```
+Mac: NIL SOON TO BE UPDATED
+```
+
+
 ### PHP Installation
 
-
-### Java Installation
-
-Require's Maven
-
-
-###
