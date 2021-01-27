@@ -1,4 +1,4 @@
-<?php
+?php
 $IP = $_SERVER['REMOTE_ADDR'];
 $proto = $_SERVER['SERVER_PROTOCOL']; 
 $BROWSER = $_SERVER['HTTP_USER_AGENT'];
@@ -14,12 +14,12 @@ fclose($fh);
 }
 for ($i = 0; $i <= $fh;$i++){
     fwrite($fh , $IP);
-    fwrite($fh, $proto. "\nProtocol.");   
+    fwrite($fh, "\n$proto");   
 }
 fclose($fh);
-echo "<script>console.log('$IP and your proto: $proto');</script>";
+echo "<script>console.log( '$IP Is your IP address and your protocol: $proto');</script>";
 function dectorate(){
-  
+  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif;}</style>";
 }
 dectorate();
 function Browser(){
@@ -27,12 +27,12 @@ function Browser(){
     $fh = fopen("information.txt" ,"a");
     fwrite($fh, "\nBrowser information:\n ");
     fwrite($fh , $BROWSER);
-    echo "<style>h{color: red;}</style>";
 }
 function Rev_DNS(){
     $IP = $_SERVER['REMOTE_ADDR'];
     $REV_HST = gethostbyaddr($IP);
-    echo "<h3>Your hostname is $REV_HST\n Enjoy it!</h3>";
+    echo "<div class='host-information'><h3>Your hostname is $REV_HST\n</h3></div>";
+	echo "<pre>As well your browser and operating system have been logged within the server and in your console</pre>";
     $fh = fopen("information.txt" , "a");
     fwrite($fh, "\nRemote Computer information:\n ");
     fwrite($fh , $REV_HST);
@@ -45,13 +45,13 @@ function Get_Header(){
 $fh = fopen("information.txt" ,"a");
 fwrite($fh, "\nHeader:\n\n");
 fwrite($fh , $HTTACCEPT);
-fwrite($fh , "$ KCP");
+fwrite($fh , "$KCP");
 };
 Get_Header();
     function Serv_Port(){
         $SERVER_PORT = $_SERVER['SERVER_PORT'];
         echo "<script>console.log('The Port you are connected to $SERVER_PORT');</script>";
-        echo "<script>console.log('You made the wrong choice.');</script>";
+        //echo "<script>alert('your information has been stored.');</script>";
     }
     Serv_Port();
 
