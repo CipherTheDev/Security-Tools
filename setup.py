@@ -1,6 +1,7 @@
 from setuptools import *
 import time
 import requests
+import argparse
 """
 Below is the setup that may require some API's and/or wrappers.
 ##############################################################
@@ -24,14 +25,18 @@ except Exception as e:
         f.writelines("<style>p{ color: green;} body{background-image: https://img1.goodfon.com/original/1920x1080/0/d2/cvety-zelen-trava-lug-pole.jpg?d=1}")
 
 class Gather_Report():
+    print("use the following arguments in order to open the report")
+    print("-h html , -t text , -w .docx and/or default by web layout")
     pass
 
 class Print_report(Gather_Report):
+    print(""""
+    use the following arguemnts to print the report either in a browser and/or text editor
+    
+    -o ~/root/example.html , -ho PRINTS THE HTML DOCUMENT,   -d PRINTS DEFAULT FORMAT IN WEB LAYOUT
+    """)
     pass
 
 
 
 Get_RPT = Gather_Report()
-if __name__  == "__main__":
-
-Get_RPT()
