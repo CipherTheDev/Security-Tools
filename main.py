@@ -6,6 +6,7 @@ class Command():
     def __init__(self):
         self.date = datetime.date.today()
         self.IPv4 = "172"
+        self.sock = socket.socket(socket.SOCK_STREAM , socket.AF_INET)
         self.File = None
         pass
 
