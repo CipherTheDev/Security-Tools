@@ -3,6 +3,7 @@ import time
 import requests
 import argparse
 import sys , os
+from requests.exceptions import HTTPError
 """
 Below is the setup that may require some API's and/or wrappers.
 ##############################################################
@@ -47,16 +48,54 @@ class Gather_Report():
         except:
             print("Wrong value and/or application crashed.")
         pass
+
+    def Inspect_Site(self):
+        try:
+            req = requests.get('', stream=True)
+            req_status = req
+            req_status.encoding
+            req_status.status_code
+            req_json_data = req
+            req_json_data.json()
+            print(f'Are you certain this {req.url} is correct?')
+            print(req.text)
+            if req_status == 404:
+                print(f'The following status code returned 404')
+            if req_status == 200:
+                print(f'The following status code returned 200')
+            elif req_status == 204:
+                print(f'The following status code returned 204')
+            elif req_status == 502:
+                print(f'Permission denied, status code: 502')
+            elif req_status == 202:
+                print(f'The following status code returned 202')
+                if req_status == 200:
+                    print(f'The following status code returned 200, website is active.')
+            elif req_status == 203:
+                print(f'')
+                time.sleep(30)
+                print(f'\n\n{req.text}')
+            
+        except HTTPError as error_404:
+            print(f'An HTTP has occurred {error_404}')
+        except  Exception as err:
+            print(f"Unrelated error has occured, please read the error status: {err}")
+        pass
 class Print_report(Gather_Report):
     print(""""
-    use the following arguemnts to print the report either in a browser and/or text editor
+    use the following arguments to print the report either in a browser and/or text editor
     
     -o ~/root/example.html , -ho PRINTS THE HTML DOCUMENT,   -d PRINTS DEFAULT FORMAT IN WEB LAYOUT
     """)
-    
+
     pass
 
-
+"""
+############################################
+USE THE FOLLOWING CODE UNDER INSPECT_SITE() 
+TO TROUBLESHOOT AND/OR MODIFY TO MEET YOUR OWN REQUIREMENTS
+~PZarrin
+"""
 
 Get_RPT = Gather_Report()
 Get_RPT.Show_Output()
