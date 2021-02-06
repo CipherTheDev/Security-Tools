@@ -12,5 +12,11 @@ fclose($myfile);
 $REQ =  $_GET['submit'];
 echo "";
 $SECURITY_ARRAY = array("<script>", "<ScRipt>" , " ");
+
+function Edit_Layout(){
+  
+  
+  
+}
 ?>
 //To be updated with new source code
