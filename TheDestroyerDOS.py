@@ -19,7 +19,6 @@ UNDER ACT 1968 IS WRITTEN IN C AND C++ ALONG JAVA. ANY ILLEGAL USAGE AS SAID MEA
 
 THIS SOFTWARE ALLOWS HACKERS TO TEST ALL  VULNEBILITIES IN A SYSTEM.
 THANK YOU FOR READING.
-
 ~Parsa Zarrin
 """
 
@@ -49,7 +48,16 @@ print("""
 #    def Crawler(self):
 #        self.crawl = raw_input("Enter the site to crawl->")
 
+"""
+THE FOLLOWING SOURCE CODE IS OUT OF DATE,
 
+
+EXPECT AN UPDATE SHORTLY WITHIN A SIX MONTH PERIOD
+
+
+
+
+"""
 def Create():
     dos = socket.socket(socket.AF_INET ,socket.SOCK_STREAM)
     vic =  raw_input("Enter in the victim's IP->\t")
