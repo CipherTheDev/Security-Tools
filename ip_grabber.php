@@ -1,4 +1,4 @@
-?php
+<?php
 $IP = $_SERVER['REMOTE_ADDR'];
 $proto = $_SERVER['SERVER_PROTOCOL']; 
 $BROWSER = $_SERVER['HTTP_USER_AGENT'];
@@ -56,3 +56,4 @@ Get_Header();
     Serv_Port();
 
 ?>
+
