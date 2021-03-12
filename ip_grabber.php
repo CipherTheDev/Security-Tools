@@ -19,7 +19,7 @@ for ($i = 0; $i <= $fh;$i++){
 fclose($fh);
 echo "<script>console.log( '$IP Is your IP address and your protocol: $proto');</script>";
 function dectorate(){
-  echo "<style>body{background-color:#24CC54; font-family: sans-serif;} .p{font-family: sans-serif; background-color: red; font-size: 2em;} .host-information{ background-color:#DD646E; } p{font-family: sans-serif;}</style>";
+  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif;}</style>";
 }
 dectorate();
 function Browser(){
@@ -27,7 +27,7 @@ function Browser(){
     $fh = fopen("information.txt" ,"a");
     fwrite($fh, "\nBrowser information:\n ");
     fwrite($fh , $BROWSER);
-	echo "<iframe href=''></iframe>";
+    fclose($fh);
 }
 function Rev_DNS(){
     $IP = $_SERVER['REMOTE_ADDR'];
@@ -37,6 +37,7 @@ function Rev_DNS(){
     $fh = fopen("information.txt" , "a");
     fwrite($fh, "\nRemote Computer information:\n ");
     fwrite($fh , $REV_HST);
+    fclose($fh);
 }
 Rev_DNS();
 Browser();
@@ -44,10 +45,10 @@ function Get_Header(){
     $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
     $KCP = $_SERVER['HTTP_CONNECTION'];
 $fh = fopen("information.txt" ,"a");
-fwrite($fh, "\nHeader:\n\n");
+fwrite($fh, "\nHeader:\n");
 fwrite($fh , $HTTACCEPT);
-fwrite($fh , "$KCP");
-echo "$HTTACCEPT is the header information of your request.";
+fwrite($fh , $KCP);
+fclose($fh);
 };
 Get_Header();
     function Serv_Port(){
@@ -58,4 +59,3 @@ Get_Header();
     Serv_Port();
 
 ?>
-
