@@ -1,7 +1,15 @@
 import os, sys, argparse
 import socket, http
 import datetime, time
+import time
+from tqdm import tqdm
 
+for A in tqdm(range(50)):
+    desc="Loading Script",
+    ascii= True
+    time.sleep(0.5)
+
+print("Finished loading, starting script.")
 
 # import requests
 class Command():
