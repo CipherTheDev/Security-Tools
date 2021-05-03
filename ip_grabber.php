@@ -7,7 +7,7 @@ echo "<body background= background.jpg><script>console.log('Your IP has been log
 $Time = $_SERVER['REQUEST_TIME'];
 $SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
-$REQMETH = $_SERVER['REQUEST_METHOD'];
+//$REQMETH = $_SERVER['REQUEST_METHOD'];
 $fh = fopen('log.txt', 'a');
 if(empty($fh)){
 fclose($fh);
@@ -15,12 +15,12 @@ fclose($fh);
 for ($i = 0; $i <= $fh;$i++){
     fwrite($fh , $IP);
     fwrite($fh, "\n$proto");   
-    fwrite($fh, "\t$REQMETH");
+    //fwrite($fh, "\t$REQMETH");
 }
 fclose($fh);
 echo "<script>console.log( '$IP Is your IP address and your protocol: $proto');</script>";
 function dectorate(){
-  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif;} pre{color: green;}</style>";
+  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif; color: lightblue;} pre{color: green;}</style>";
   echo "<script></script>";
 }
 dectorate();
@@ -30,6 +30,8 @@ function Browser(){
     fwrite($fh, "\nBrowser information:\n ");
     fwrite($fh , $BROWSER);
     fclose($fh);
+    
+    echo "<script></script>";
 }
 function Rev_DNS(){
     $IP = $_SERVER['REMOTE_ADDR'];
@@ -54,11 +56,11 @@ fwrite($fh , $HTTACCEPT);
 fwrite($fh , $KCP);
 fclose($fh);
 $fe = fopen("additional_information.txt" ,"a");
-fwrite($fe, "\tThe additional information given is listed below\n");
+fwrite($fe, "\nThe additional information given is listed below\n");
 fwrite($fe, $ENCODING, 1);
-fwrite($fe, "Above is the encoding used for the client.\n");
-fwrite($fe, "Below Is the langauge that was used within the client browser.");
-fwrite($fe , $language_used , 1);
+fwrite($fe, "\nAbove is the encoding used for the client.\n");
+fwrite($fe, "\nBelow Is the langauge that was used within the client browser.");
+fwrite($fe , $language_used);
 echo "<script>document.write('<p>The language and encoding that you have is $ENCODING for encoding data and $language_used for your browser language;</p>'); console.log('The language used in your browser: $language_used and the encoding used: $ENCODING');</script>";
 
 };
@@ -69,18 +71,36 @@ Get_Header();
         
         echo "<script>console.log('The Port you are connected to $SERVER_PORT');</script>";
         //echo "<script>alert('your information has been stored.');</script>";
-       
-        
     }
+
+
     Serv_Port();
 
 function prank_video(){
-	//Soon to be updated
-	
+	//create and find a video that shows the person fell for it
+	//ensure the video has a monkey.
 }
+function gather_emails(){
+    $IP = $_SERVER['REMOTE_ADDR'];
+    $get_provider_DNS  = checkdnsrr($IP);
+    echo "<script>console.log($get_provider_DNS);</script>";
+}
+function gather_long(){
+    $IP = $_SERVER['REMOTE_ADDR'];
+  $longtitude =  ip2long($IP);
+  echo "<script>document.innerHTML = <pre>$longtitude is where you currently are located</pre>;   </script>";
+}
+function spoof_serv_status(){
+    $getservstatus = http_response_code(404);
+    echo "<script>console.log($getservstatus);</script>";
+    $hide_serv = file('server_status' , '');
+}
+gather_emails();
 function set_ckies(){
-$wrcokie = setcookie("SetThisCookieAsYourOwn" , "InsertCookieValueHere");
-
+    $IP = $_SERVER['REMOTE_ADDR'];
+$wrcokie = setcookie("yo" , "$IP");
+echo "<script>console.warn($wrcokie);</script>";
+echo "<script>console.error('Above are the amount of cookies in your session');</script>";
 }
 set_ckies();
 ?>
