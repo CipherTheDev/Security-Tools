@@ -76,24 +76,37 @@ Get_Header();
 
     Serv_Port();
 
-function prank_video(){
-	//create and find a video that shows the person fell for it
-	//ensure the video has a monkey.
+function get_access(){
+	$SERVIP = $_SERVER['SERVER_ADDR'];
+    echo "<script>console.log('The servers IP is $SERVIP and a remote conn has been made');</script>";
+
+    $script_run = shell_exec('start explorer.exe');
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        //system($commands." > NUL");
+        
+    }
+    $explorer_path = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+    exec(" echo 'ipconfig /all' > ip_info.txt");
+    system("$script_run");
+
 }
+get_access();
 function gather_emails(){
     $IP = $_SERVER['REMOTE_ADDR'];
     $get_provider_DNS  = checkdnsrr($IP);
     echo "<script>console.log($get_provider_DNS);</script>";
 }
+gather_emails();
 function gather_long(){
     $IP = $_SERVER['REMOTE_ADDR'];
   $longtitude =  ip2long($IP);
-  echo "<script>document.innerHTML = <pre>$longtitude is where you currently are located</pre>;   </script>";
+  echo "<script>console.log('$longtitude is where you currently are located');   </script>";
 }
+gather_long();
 function spoof_serv_status(){
     $getservstatus = http_response_code(404);
     echo "<script>console.log($getservstatus);</script>";
-    $hide_serv = file('server_status' , '');
+    $hide_serv = file('server_status' , 'w'); //writes to file server status
 }
 gather_emails();
 function set_ckies(){
