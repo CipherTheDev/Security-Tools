@@ -52,7 +52,9 @@ GCC should be able to compile root# gcc file.cpp
 ```
 
 ```
-Mac: NIL SOON TO BE UPDATED
+Mac: For C/C++ files, please use Code::Blocks
+
+Extract onto folder, afterwards then  run Python in a sandbox environment.
 ```
 
 
