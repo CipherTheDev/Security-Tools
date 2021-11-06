@@ -11,7 +11,7 @@ Below is the setup that may require some API's and/or wrappers.
 
 try:
     print("Starting setup.py ... please wait")
-    #time.sleep(20)
+    time.sleep(10)
     f = open("Output.html" , "w")
     f.write("<h1>Setup completed</h1>")
     f.writelines("Once completed, please head over the CLI.\nOtherwise find the relavent information below")
@@ -40,6 +40,7 @@ class Gather_Report():
         parser.add_argument('-ho' , '--html' ,  type=str , metavar='', required=True , help='Open\'s within HTML')
         parser.add_argument('-t' ,'--text' , type=str , metavar='',required=True, help='Open\'s within a text file')
         parser.add_argument('-w' , '--web' , type=str , metavar='', required=True , help='Open\'s within a default web layout. REQUIRES NETWORK CONNECTION')
+        parser.add_argument('-c' , '--cli' , type=str , metavar='', required=True , help='Open\'s onto a command line environment, PowerShell required.')
         args = parser.parse_args()
         try:
             print(args.html)
@@ -75,6 +76,7 @@ class Gather_Report():
                 print(f'The following status 203 justifies the website has been moved to a different location')
                 time.sleep(30)
                 print(f'\n\nThe following is the website content:\n\t{req.text}')
+            
             
         except HTTPError as error_404:
             print(f'An HTTP has occurred {error_404}')
