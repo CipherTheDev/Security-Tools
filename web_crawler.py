@@ -11,7 +11,6 @@ Below is the setup that may require some API's and/or wrappers.
 
 try:
     print("Starting setup.py ... please wait")
-    time.sleep(10)
     f = open("Output.html" , "w")
     f.write("<h1>Setup completed</h1>")
     f.writelines("Once completed, please head over the CLI.\nOtherwise find the relavent information below")
@@ -35,21 +34,25 @@ class Gather_Report():
 
     def Show_Output(self):
         print("use the following arguments in order to open the report")
-        print("-h h tml , -t text , -w .docx and/or default by web layout")
+        print("-h html , -t text , -w .docx and/or default by web layout")
         parser = argparse.ArgumentParser(description="Opens within HTML format" , usage="" , prog="")
-        parser.add_argument('-ho' , '--html' ,  type=str , metavar='', required=True , help='Open\'s within HTML')
+        parser.add_argument('-ho' , '--html' ,  type=str , metavar='', required=False , help='Open\'s within HTML')
         parser.add_argument('-t' ,'--text' , type=str , metavar='',required=True, help='Open\'s within a text file')
-        parser.add_argument('-w' , '--web' , type=str , metavar='', required=True , help='Open\'s within a default web layout. REQUIRES NETWORK CONNECTION')
-        parser.add_argument('-c' , '--cli' , type=str , metavar='', required=True , help='Open\'s onto a command line environment, PowerShell required.')
+        parser.add_argument('-w' , '--web' , type=str , metavar='', required=False , help='Open\'s within a default web layout. REQUIRES NETWORK CONNECTION')
+        parser.add_argument('-c' , '--cli' , type=str , metavar='', required=False , help='Open\'s onto a command line environment, PowerShell required.')
         args = parser.parse_args()
         try:
-            print(args.html)
+            if args.html == None:
+                print("No HTML file was created")
             print(args.text)
-            print(args.web)
+            if args.web == None:
+                pass
+            elif args.web:
+               pass
         except:
             print("Wrong value and/or application crashed.")
         pass
-
+#Fix the requirement of more than one input
     def Inspect_Site(self):
         try:
             req = requests.get('', stream=True)
