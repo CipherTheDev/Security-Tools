@@ -43,7 +43,7 @@ class Gather_Report():
         args = parser.parse_args()
         try:
             if args.html == None:
-                print("No HTML file was created")
+               pass
             print(args.text)
             if args.web == None:
                 pass
@@ -51,18 +51,29 @@ class Gather_Report():
                pass
         except:
             print("Wrong value and/or application crashed.")
+
         pass
 #Fix the requirement of more than one input
-    def Inspect_Site(self):
+    def Inspect_Site(self) -> str:
+        script , link = sys.argv
+        print(f"Running, {script} and inspecting {link}")
         try:
-            req = requests.get('', stream=True)
+            req = requests.get(link ,stream=True)
             req_status = req
             req_status.encoding
             req_status.status_code
-            req_json_data = req
-            req_json_data.json()
+            #req_json_data = req Add JSON in future release
             print(f'Are you certain this {req.url} is correct?')
-            print(req.text)
+            question_user = str(input('Please type: Y or y for yes and N or n for No:\t'))
+            if question_user == 'y':
+                print(req.text)
+            elif question_user == 'n' or 'N':
+                print('Do you wish to exit the spider?')
+                question_exit = str(input('Confirming, please type: Y or y to confirm\t'))
+                if question_exit == 'yes' or 'y':
+                    sys.exit(1)
+                    
+                
             if req_status == 404:
                 print(f'The following status code returned 404')
             if req_status == 200:
@@ -80,18 +91,19 @@ class Gather_Report():
                 time.sleep(30)
                 print(f'\n\nThe following is the website content:\n\t{req.text}')
             
-            
+        except ValueError:
+            print("Response Content does not contain JSON")
         except HTTPError as error_404:
             print(f'An HTTP has occurred {error_404}')
         except  Exception as err:
             print(f"Unrelated error has occured, please read the error status: {err}")
-        pass
+        
 class Print_report(Gather_Report):
-    print(""""
-    use the following arguments to print the report either in a browser and/or text editor
+    #print(""""
+    #use the following arguments to print the report either in a browser and/or text editor
     
-    -o ~/root/example.html , -ho PRINTS THE HTML DOCUMENT,   -d PRINTS DEFAULT FORMAT IN WEB LAYOUT
-    """)
+   # -o ~/root/example.html , -ho PRINTS THE HTML DOCUMENT,   -d PRINTS DEFAULT FORMAT IN WEB LAYOUT
+   # """)
 
     pass
 
@@ -103,4 +115,4 @@ TO TROUBLESHOOT AND/OR MODIFY TO MEET YOUR OWN REQUIREMENTS
 """
 
 Get_RPT = Gather_Report()
-Get_RPT.Show_Output()
+Get_RPT.Inspect_Site()
