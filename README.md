@@ -32,8 +32,6 @@ Check the repository for this file.
 ```
 
 
-### C++ Installation
-
 ***Install  MingW and follow the instructions***
 ```
 Windows: Download "Code::Blocks" , Specify your compiler, Open -> file.cpp
