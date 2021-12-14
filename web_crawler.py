@@ -66,7 +66,16 @@ class Gather_Report():
             print(f'Are you certain this {req.url} is correct?')
             question_user = str(input('Please type: Y or y for yes and N or n for No:\t'))
             if question_user == 'y':
-                print(req.text)
+                prompt_confirmation_printing = str(input('Do you wish to print the results gathered?'))
+                if prompt_confirmation_printing =='y':
+                    print(req.text)
+                elif prompt_confirmation_printing == 'Y':
+                    print(req.text)
+                elif prompt_confirmation_printing == 'n' or prompt_confirmation_printing == 'N':
+                    print("Closing down script.")
+                    sys.exit(1)
+                
+
             elif question_user == 'n' or 'N':
                 print('Do you wish to exit the spider?')
                 question_exit = str(input('Confirming, please type: Y or y to confirm\t'))
