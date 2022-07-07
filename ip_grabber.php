@@ -46,6 +46,7 @@ function Rev_DNS(){
 Rev_DNS();
 Browser();
 function Get_Header(){
+    try{
     $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
     $KCP = $_SERVER['HTTP_CONNECTION'];
     $ENCODING = $_SERVER['HTTP_ACCEPT_ENCODING'];
@@ -62,15 +63,24 @@ fwrite($fe, "\nAbove is the encoding used for the client.\n");
 fwrite($fe, "\nBelow Is the langauge that was used within the client browser.");
 fwrite($fe , $language_used);
 echo "<script>document.write('<p>The language and encoding that you have is $ENCODING for encoding data and $language_used for your browser language;</p>'); console.log('The language used in your browser: $language_used and the encoding used: $ENCODING');</script>";
+    }
+    catch(Exception $e){
+        echo "$e has occurred.";
+    }
 
 };
 Get_Header();
     function Serv_Port(){
         $SERVER_PORT = $_SERVER['SERVER_PORT'];
-        
+        $SERVER_ACCPT_CONN = $_SERVER['REQUEST_METHOD'];
+
+        if ($_SERVER['GET']){
+
+        }
         
         echo "<script>console.log('The Port you are connected to $SERVER_PORT');</script>";
         //echo "<script>alert('your information has been stored.');</script>";
+
     }
 
 
@@ -85,9 +95,6 @@ function get_access(){
         //system($commands." > NUL");
         
     }
-    $explorer_path = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-    exec(" echo 'ipconfig /all' > ip_info.txt");
-    system("$script_run");
 
 }
 get_access();
@@ -116,4 +123,19 @@ echo "<script>console.warn($wrcokie);</script>";
 echo "<script>console.error('Above are the amount of cookies in your session');</script>";
 }
 set_ckies();
+
+/*header("Content-Type: image/png");
+$ip = $_SERVER['REMOTE_ADDR'];  
+$im = @imagecreate(110, 20)
+    or die("Cannot Initialize new GD image stream");
+$background_color = imagecolorallocate($im, 0, 0, 0);
+$text_color = imagecolorallocate($im, 233, 14, 91);
+imagestring($im, 1, 5, 5,  "A example image made in php", $text_color);
+imagepng($im);
+imagedestroy($im);
+$fp = fopen('iplog.txt', 'a');
+fwrite($fp, $ip .'\n');  
+fclose($fp);
+
+*/ 
 ?>
