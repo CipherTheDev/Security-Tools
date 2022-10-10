@@ -15,7 +15,7 @@ Enjoy it! :)
 class Start_Sniffer():
     name , IP = sys.argv
     def __init__(self):
-        self.script = "DR T7R@C3"
+        self.script = "Bob"
         print ("Script name: " , self.script)
         self.IPs =  sys.argv[0]
     def Sniff(self):
