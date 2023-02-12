@@ -127,8 +127,6 @@ test.port_scn()
 the following is the documentation for this command and control script,
 please note that if any modifications under the licence of GPLv3, therefore the original author must be mentioned
 Author details,
-Name: Parsa Zarrin
-Social Media: hackforums.com/TheHiddenCoder, instagram.com/parsathedev
 Location: Australia
-Purpose of script: To aid 
+Purpose of script: To aid professionals
 """
