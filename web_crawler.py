@@ -107,14 +107,14 @@ class Gather_Report():
         except  Exception as err:
             print(f"Unrelated error has occured, please read the error status: {err}")
         
-class Print_report(Gather_Report):
+#class Print_report(Gather_Report):
     #print(""""
     #use the following arguments to print the report either in a browser and/or text editor
     
    # -o ~/root/example.html , -ho PRINTS THE HTML DOCUMENT,   -d PRINTS DEFAULT FORMAT IN WEB LAYOUT
    # """)
 
-    pass
+  #  pass
 
 """
 ############################################
@@ -125,3 +125,4 @@ TO TROUBLESHOOT AND/OR MODIFY TO MEET YOUR OWN REQUIREMENTS
 
 Get_RPT = Gather_Report()
 Get_RPT.Inspect_Site()
+
