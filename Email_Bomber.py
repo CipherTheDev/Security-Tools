@@ -49,7 +49,7 @@ class Destroyer_Main():
     server.ehlo(name="")
     server.verify("")
     passwd = ""
-    user = "calvinsmith2131@gmail.com"
+    user = "username@gmail.com"
     try:
       msg = None
       target = None
