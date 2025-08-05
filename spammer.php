@@ -65,19 +65,8 @@ for($i=0; $i <=$amount; $i++){
 Sender();
 function Displays(){
   $HTMLTAGS = "<html>\n\n<style>body{background: grey;}</style></html>";
+  echo "$HTMLTAGS";
 }
-function DetectXSS(){
-  $target = $_GET['target'];
-$subject = $_GET['subject'];
-$message = $_GET['message'];
-$sender = $_GET['sender'];
-$amount = $_GET['amount'];
-  $array = array("<script>" , "<?php" , "<ScRiPt>"  , "onerror");
- // 
- if(!ctype_alnum(str_replace($array , '' ,$target)))
- { echo "XSS detected";}
-}
-DetectXSS();
 Displays();
 function Payloads(){
   $payload = $_POST['payload'];
@@ -93,5 +82,8 @@ function Payloads(){
 if($amount >= 1000){
   echo "<script>alert('Are you sure that you wish to spam this much? May take longer');</script>";
 
+
+}
+function Calculate_Message_Mount(){
 
 }
