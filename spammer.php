@@ -1,11 +1,5 @@
 
 <?php
-//header('Content-Type: application/force-download');
-//$file_url = 'http://www.myremoteserver.com/python.exe';
-//header('Content-Type: application/octet-stream');
-//header("Content-Transfer-Encoding: Binary"); 
-//header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\""); 
-//readfile($file_url); 
 $target = $_GET['target'];
 $subject = $_GET['subject'];
 $message = $_GET['message'];
@@ -87,3 +81,4 @@ if($amount >= 1000){
 function Calculate_Message_Mount(){
 
 }
+
